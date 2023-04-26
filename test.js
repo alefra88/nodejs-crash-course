@@ -1,3 +1,5 @@
-const name = 'yoshi';
+const name = "yoshi";
 
 console.log(name);
+
+let perro = "dog";
