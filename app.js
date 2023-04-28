@@ -13,5 +13,14 @@ app.get("/", (req, res) => {
 app.get("/about", (req, res) => {
   // res.send("<p>About Page</p>");
   res.sendFile("./about.html", { root: __dirname });
+});
 
+//Redirects
+app.get("/about-us", (req, res) => {
+  res.redirect("/about");
+});
+
+//404
+app.use((req, res) => {
+  res.status(404).sendFile("./404.html", { root: __dirname });
 });
