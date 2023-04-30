@@ -12,9 +12,9 @@ app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
   const blogs = [
-    {title: 'Yoshi finds eggs', snippet: 'Lorem ipsum dolor sit amet consectetur'},
-    {title: 'Mario finds stars', snippet: 'Lorem ipsum dolor sit amet consectetur'},
-    {title: 'How to defeat bowser', snippet: 'Lorem ipsum dolor sit amet consectetur'},
+    {title: 'Nodejs test title', snippet: 'Lorem ipsum dolor sit amet consectetur'},
+    {title: 'Nodejs and ejs', snippet: 'Lorem ipsum dolor sit amet consectetur'},
+    {title: 'Nodejs for Dummies', snippet: 'Lorem ipsum dolor sit amet consectetur'},
   ];
   res.render('index', { title: 'Home', blogs });
 });
