@@ -4,6 +4,10 @@ const morgan = require("morgan");
 // express app
 const app = express();
 
+//connect to DB
+dbURI =
+  "mongodb+srv://admin:9zkPw8gvTH45jIRb@cluster0.3narixn.mongodb.net/?retryWrites=true&w=majority";
+
 // listen for requests
 app.listen(3000);
 
