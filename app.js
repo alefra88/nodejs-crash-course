@@ -58,18 +58,6 @@ app.get("/single-blog", (req, res) => {
       console.log(err);
     });
 });
-// app.use((req, res, next) => {
-//   console.log("new request made:");
-//   console.log("host: ", req.hostname);
-//   console.log("path: ", req.path);
-//   console.log("method: ", req.method);
-//   next();
-// });
-
-// app.use((req, res, next) => {
-//   console.log("in the next middleware");
-//   next();
-// });
 
 app.use(morgan("dev"));
 
@@ -77,33 +65,30 @@ app.use((req, res, next) => {
   res.locals.path = req.path;
   next();
 });
-
+//blog routes
+//HOME
 app.get("/", (req, res) => {
-  const blogs = [
-    {
-      title: "Nodejs test title",
-      snippet: "Lorem ipsum dolor sit amet consectetur",
-    },
-    {
-      title: "Nodejs and ejs",
-      snippet: "Lorem ipsum dolor sit amet consectetur",
-    },
-    {
-      title: "Nodejs for Dummies",
-      snippet: "Lorem ipsum dolor sit amet consectetur",
-    },
-  ];
-  res.render("index", { title: "Home", blogs });
+  res.redirect("/blogs");
 });
-
+//ABOUT
 app.get("/about", (req, res) => {
   res.render("about", { title: "About" });
 });
-
+//create blog
 app.get("/blogs/create", (req, res) => {
   res.render("create", { title: "Create a new blog" });
 });
-
+//ALL BLOGS
+app.get("/blogs", (req, res) => {
+  Blog.find()
+    .sort({ createdAt: -1 })
+    .then((result) => {
+      res.render("index", { title: "All blogs", blogs: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 // 404 page
 app.use((req, res) => {
   res.status(404).render("404", { title: "404" });
