@@ -2,7 +2,7 @@ const express = require("express");
 const blogController = require("../controllers/blogController");
 const router = express.Router();
 
-//ALL BLOGS
+//INDEX
 router.get("/", blogController.blog_index);
 
 //POST
